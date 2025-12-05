@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -20,5 +24,47 @@ public class CalculatorActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button[] allbtn = new Button[]{
+                findViewById(R.id.Button00),
+                findViewById(R.id.Button0),
+                findViewById(R.id.Button1),
+                findViewById(R.id.Button2),
+                findViewById(R.id.Button3),
+                findViewById(R.id.Button4),
+                findViewById(R.id.Button5),
+                findViewById(R.id.Button6),
+                findViewById(R.id.Button7),
+                findViewById(R.id.Button8),
+                findViewById(R.id.Button9),
+                findViewById(R.id.ButtonPlus),
+                findViewById(R.id.ButtonMinus),
+                findViewById(R.id.ButtonPlusMinus),
+                findViewById(R.id.ButtonSquare),
+                findViewById(R.id.ButtonA),
+                findViewById(R.id.ButtonB),
+                findViewById(R.id.ButtonC),
+                findViewById(R.id.ButtonD),
+                findViewById(R.id.ButtonE),
+                findViewById(R.id.ButtonF),
+                findViewById(R.id.ButtonEqual),
+                findViewById(R.id.ButtonDiv),
+                findViewById(R.id.ButtonMul),
+                findViewById(R.id.ButtonModulo),
+
+        };
+
+        for(Button btn : allbtn){
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(CalculatorActivity.this, btn.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
+
+
     }
 }

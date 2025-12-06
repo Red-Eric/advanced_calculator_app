@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -51,14 +53,20 @@ public class CalculatorActivity extends AppCompatActivity {
                 findViewById(R.id.ButtonDiv),
                 findViewById(R.id.ButtonMul),
                 findViewById(R.id.ButtonModulo),
-
+                findViewById(R.id.ButtonPright),
+                findViewById(R.id.ButtonPLeft),
+                findViewById(R.id.ButtonReset),
+                findViewById(R.id.ButtonVirg),
+                findViewById(R.id.ButtonDel)
         };
+
+        Log.d("LENGHT", "BTN Nbr : "+ allbtn.length);
 
         for(Button btn : allbtn){
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(CalculatorActivity.this, btn.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("TAG", "onClick: "+ btn.getText().toString() );
                 }
             });
         }

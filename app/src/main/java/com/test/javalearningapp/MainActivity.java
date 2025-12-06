@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         startImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Image cliquer", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, CalculatorActivity.class);
                 startActivity(intent);
             }

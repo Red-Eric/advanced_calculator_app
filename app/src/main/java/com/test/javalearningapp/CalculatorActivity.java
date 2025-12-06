@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -37,32 +39,14 @@ public class CalculatorActivity extends AppCompatActivity {
                 findViewById(R.id.octText),
                 findViewById(R.id.binText),
         };
-
+        textViewsType[0].setPaintFlags(textViewsType[0].getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         selectedMode = getResources().getResourceEntryName(textViewsType[0].getId()); // hexText
 
 //        Log.d("ID", "ID : "+ selectedMode);
 
         // Handle change Mode
 
-        for (TextView mode:
-             textViewsType) {
-            mode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    for (TextView mode_:
-                         textViewsType) {
-                        if( mode == mode_){
-                            mode.setPaintFlags(mode.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                            selectedMode = getResources().getResourceEntryName(mode_.getId());
-//                            Log.d("Selected Mode", selectedMode);
-                        }
-                        else{
-                            mode_.setPaintFlags(mode_.getPaintFlags() & (~Paint.UNDERLINE_TEXT_FLAG));
-                        }
-                    }
-                }
-            });
-        }
+
 
         Button[] allbtn = new Button[]{
                 findViewById(R.id.Button00),
@@ -93,12 +77,79 @@ public class CalculatorActivity extends AppCompatActivity {
                 findViewById(R.id.ButtonPright),
                 findViewById(R.id.ButtonPLeft),
                 findViewById(R.id.ButtonReset),
-                findViewById(R.id.ButtonVirg),
+                //findViewById(R.id.ButtonVirg),
                 findViewById(R.id.ButtonDel)
         };
 
-//        Log.d("LENGHT", "BTN Nbr : "+ allbtn.length);
+        Button[] decBtns = new Button[]{
+                findViewById(R.id.Button00),
+                findViewById(R.id.Button0),
+                findViewById(R.id.Button1),
+                findViewById(R.id.Button2),
+                findViewById(R.id.Button3),
+                findViewById(R.id.Button4),
+                findViewById(R.id.Button5),
+                findViewById(R.id.Button6),
+                findViewById(R.id.Button7),
+                findViewById(R.id.Button8),
+                findViewById(R.id.Button9),
+                findViewById(R.id.ButtonPlus),
+                findViewById(R.id.ButtonMinus),
+                findViewById(R.id.ButtonPlusMinus),
+                findViewById(R.id.ButtonSquare),
+                findViewById(R.id.ButtonEqual),
+                findViewById(R.id.ButtonDiv),
+                findViewById(R.id.ButtonMul),
+                findViewById(R.id.ButtonModulo),
+                findViewById(R.id.ButtonPright),
+                findViewById(R.id.ButtonPLeft),
+                findViewById(R.id.ButtonReset),
+                findViewById(R.id.ButtonDel)
+        };
 
+        Button[] octBtns = new Button[]{
+                findViewById(R.id.Button00),
+                findViewById(R.id.Button0),
+                findViewById(R.id.Button1),
+                findViewById(R.id.Button2),
+                findViewById(R.id.Button3),
+                findViewById(R.id.Button4),
+                findViewById(R.id.Button5),
+                findViewById(R.id.Button6),
+                findViewById(R.id.Button7),
+                findViewById(R.id.ButtonPlus),
+                findViewById(R.id.ButtonMinus),
+                findViewById(R.id.ButtonPlusMinus),
+                findViewById(R.id.ButtonSquare),
+                findViewById(R.id.ButtonEqual),
+                findViewById(R.id.ButtonDiv),
+                findViewById(R.id.ButtonMul),
+                findViewById(R.id.ButtonModulo),
+                findViewById(R.id.ButtonPright),
+                findViewById(R.id.ButtonPLeft),
+                findViewById(R.id.ButtonReset),
+                findViewById(R.id.ButtonDel)
+        };
+
+        Button[] binBtns = new Button[]{
+                findViewById(R.id.Button00),
+                findViewById(R.id.Button0),
+                findViewById(R.id.Button1),
+                findViewById(R.id.ButtonPlus),
+                findViewById(R.id.ButtonMinus),
+                findViewById(R.id.ButtonPlusMinus),
+                findViewById(R.id.ButtonSquare),
+                findViewById(R.id.ButtonEqual),
+                findViewById(R.id.ButtonDiv),
+                findViewById(R.id.ButtonMul),
+                findViewById(R.id.ButtonModulo),
+                findViewById(R.id.ButtonPright),
+                findViewById(R.id.ButtonPLeft),
+                findViewById(R.id.ButtonReset),
+                findViewById(R.id.ButtonDel)
+        };
+
+        // Set Button event click
         for(Button btn : allbtn){
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,6 +158,44 @@ public class CalculatorActivity extends AppCompatActivity {
                 }
             });
         }
+
+        // Change Mode
+        for (TextView mode:
+                textViewsType) {
+            mode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (TextView mode_:
+                            textViewsType) {
+                        if( mode == mode_){
+                            mode.setPaintFlags(mode.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                            selectedMode = getResources().getResourceEntryName(mode_.getId());
+//                            Log.d("Selected Mode", selectedMode);
+                            for (Button btn:
+                                 allbtn) {
+                                if(selectedMode.equals("hexText")){
+                                    btn.setEnabled(true);
+                                }
+                                if(selectedMode.equals("decText")){
+                                    btn.setEnabled(Arrays.asList(decBtns).contains(btn));
+                                }
+                                if(selectedMode.equals("octText")){
+                                    btn.setEnabled(Arrays.asList(octBtns).contains(btn));
+                                }
+                                if(selectedMode.equals("binText")){
+                                    btn.setEnabled(Arrays.asList(binBtns).contains(btn));
+                                }
+                            }
+
+                        }
+                        else{
+                            mode_.setPaintFlags(mode_.getPaintFlags() & (~Paint.UNDERLINE_TEXT_FLAG));
+                        }
+                    }
+                }
+            });
+        }
+
 
     }
 }

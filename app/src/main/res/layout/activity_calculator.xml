@@ -45,14 +45,6 @@
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
         >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:id="@+id/decText"
-            android:textSize="30dp"
-            android:text="Dec : 0"/>
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/hexText"
@@ -60,6 +52,14 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:text="Hex : 0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/decText"
+            android:textSize="30dp"
+            android:text="Dec : 0"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
             <Button android:id="@+id/Button9" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="9"/>
             <Button android:id="@+id/Button6" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="6"/>
             <Button android:id="@+id/Button3" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3"/>
-            <Button android:id="@+id/ButtonVirg" android:layout_width="match_parent" android:layout_height="wrap_content" android:text=","/>
+            <Button android:id="@+id/ButtonVirg" android:enabled="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:text=","/>
         </LinearLayout>
 
         <!-- Colonne 5 -->

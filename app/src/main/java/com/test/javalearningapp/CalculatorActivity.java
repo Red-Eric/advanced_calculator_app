@@ -1,5 +1,6 @@
 package com.test.javalearningapp;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,10 +12,13 @@ import androidx.core.view.WindowInsetsCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class CalculatorActivity extends AppCompatActivity {
+
+    String selectedMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,39 @@ public class CalculatorActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        TextView[] textViewsType = new TextView[]{
+                findViewById(R.id.hexText),
+                findViewById(R.id.decText),
+                findViewById(R.id.octText),
+                findViewById(R.id.binText),
+        };
+
+        selectedMode = getResources().getResourceEntryName(textViewsType[0].getId()); // hexText
+
+//        Log.d("ID", "ID : "+ selectedMode);
+
+        // Handle change Mode
+
+        for (TextView mode:
+             textViewsType) {
+            mode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (TextView mode_:
+                         textViewsType) {
+                        if( mode == mode_){
+                            mode.setPaintFlags(mode.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                            selectedMode = getResources().getResourceEntryName(mode_.getId());
+//                            Log.d("Selected Mode", selectedMode);
+                        }
+                        else{
+                            mode_.setPaintFlags(mode_.getPaintFlags() & (~Paint.UNDERLINE_TEXT_FLAG));
+                        }
+                    }
+                }
+            });
+        }
 
         Button[] allbtn = new Button[]{
                 findViewById(R.id.Button00),
@@ -60,7 +97,7 @@ public class CalculatorActivity extends AppCompatActivity {
                 findViewById(R.id.ButtonDel)
         };
 
-        Log.d("LENGHT", "BTN Nbr : "+ allbtn.length);
+//        Log.d("LENGHT", "BTN Nbr : "+ allbtn.length);
 
         for(Button btn : allbtn){
             btn.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +107,6 @@ public class CalculatorActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
 
     }
 }

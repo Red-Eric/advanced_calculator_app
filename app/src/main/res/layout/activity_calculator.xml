@@ -50,10 +50,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:id="@+id/decText"
             android:textSize="30dp"
             android:text="Dec : 0"/>
         <TextView
             android:layout_width="wrap_content"
+            android:id="@+id/hexText"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="30dp"
@@ -61,6 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/octText"
             android:textStyle="bold"
             android:textSize="30dp"
             android:text="Oct : 0"/>
@@ -68,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:id="@+id/binText"
             android:textSize="30dp"
             android:text="Bin : 0"/>
         
@@ -84,7 +88,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <!-- Colonne 1 -->

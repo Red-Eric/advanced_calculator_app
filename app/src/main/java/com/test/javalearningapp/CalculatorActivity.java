@@ -20,8 +20,9 @@ import java.util.Arrays;
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    String selectedMode;
-
+    private String selectedMode;
+    private TextView sequence;
+    private TextView result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,8 @@ public class CalculatorActivity extends AppCompatActivity {
         };
         textViewsType[0].setPaintFlags(textViewsType[0].getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         selectedMode = getResources().getResourceEntryName(textViewsType[0].getId()); // hexText
+        sequence = findViewById(R.id.sequence);
+        result = findViewById(R.id.result);
 
 //        Log.d("ID", "ID : "+ selectedMode);
 
@@ -155,6 +158,23 @@ public class CalculatorActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.d("TAG", "onClick: "+ btn.getText().toString() );
+                    if(btn.getText().toString().equals("Del")){
+                        //                            substring(0, a.length() - 1);
+                        if(!sequence.getText().toString().isEmpty()){
+
+                            String res = sequence.getText().toString().substring(0, sequence.getText().toString().length() - 1);
+                            sequence.setText(res);
+                        }
+
+                    }
+                    else if(btn.getText().toString().equals("CE")){
+                        sequence.setText("");
+                        result.setText("0");
+                    }
+                    else{
+                        String tmp = sequence.getText().toString() + btn.getText().toString();
+                        sequence.setText(tmp);
+                    }
                 }
             });
         }
